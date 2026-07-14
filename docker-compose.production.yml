@@ -14,7 +14,7 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    image: gramulechka/foodgram_backend:latest
+    image: gramulechka/foodhub_backend:latest
     restart: always
     env_file: .env
     volumes:
@@ -24,13 +24,13 @@ services:
       - db
 
   frontend:
-    image: gramulechka/foodgram_frontend:latest
+    image: gramulechka/foodhub_frontend:latest
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
 
   gateway:
-    image: gramulechka/foodgram_gateway:latest
+    image: gramulechka/foodhub_gateway:latest
     restart: always
     volumes:
       - static:/usr/share/nginx/html/

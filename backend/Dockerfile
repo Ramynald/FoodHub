@@ -10,4 +10,4 @@ COPY backend/ .
 
 COPY data/ /app/data/
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "foodgram.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "foodhub.wsgi:application"]

@@ -1,4 +1,4 @@
-name: Main Foodgram workflow
+name: Main FoodHub workflow
 
 on:
   push:
@@ -74,7 +74,7 @@ jobs:
           context: .
           file: ./backend/Dockerfile
           push: true
-          tags: gramulechka/foodgram_backend:latest
+          tags: gramulechka/foodhub_backend:latest
 
   frontend_tests:
     runs-on: ubuntu-latest
@@ -119,7 +119,7 @@ jobs:
         with:
           context: ./frontend/
           push: true
-          tags: gramulechka/foodgram_frontend:latest
+          tags: gramulechka/foodhub_frontend:latest
 
   build_gateway_and_push:
     name: Push gateway Docker image to DockerHub
@@ -142,7 +142,7 @@ jobs:
         with:
           context: ./infra/
           push: true
-          tags: gramulechka/foodgram_gateway:latest
+          tags: gramulechka/foodhub_gateway:latest
 
   deploy:
     if: github.ref == 'refs/heads/main'
@@ -163,7 +163,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           source: "docker-compose.production.yml"
-          target: "foodgram"
+          target: "foodhub"
 
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
@@ -172,7 +172,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd foodgram
+            cd foodhub
             sudo docker compose -f docker-compose.production.yml pull
             sudo docker compose -f docker-compose.production.yml down
             sudo docker compose -f docker-compose.production.yml up -d
@@ -190,5 +190,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Foodgram deployed successfully!
+          message: FoodHub deployed successfully!
          
