@@ -9,7 +9,7 @@ const Header = ({ loggedIn, onSignOut, orders }) => {
       <div className={styles.headerContent}>
         <LinkComponent
           className={styles.headerLink}
-          title={<img className={styles.headerLogo} src={LogoHeader} alt='Foodgram' />}
+          title={<img className={styles.headerLogo} src={LogoHeader} alt='FoodHub' />}
           href='/'
         />
         <Nav
