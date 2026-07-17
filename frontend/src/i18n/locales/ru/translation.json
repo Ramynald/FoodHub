@@ -1,0 +1,11 @@
+{
+    "navigation": {
+      "recipes": "Рецепты",
+      "createRecipe": "Создать рецепт"
+    },
+    "language": {
+      "russian": "Русский",
+      "english": "English"
+    }
+  }
+  

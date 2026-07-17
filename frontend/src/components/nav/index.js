@@ -1,6 +1,13 @@
 import styles from './style.module.css'
 import { useEffect, useState } from 'react'
-import { AccountMenu, Orders, NavMenu, AccountMenuMobile, LinkComponent } from '../index.js'
+import {
+  AccountMenu,
+  Orders,
+  NavMenu,
+  AccountMenuMobile,
+  LinkComponent,
+  LanguageSwitcher
+} from '../index.js'
 import cn from 'classnames'
 import { useLocation } from 'react-router-dom'
 import hamburgerImg from '../../images/hamburger-menu.png'
@@ -35,6 +42,7 @@ const Nav = ({ loggedIn, onSignOut, orders }) => {
     </div>
     <div className={styles.nav__container}>
       <NavMenu loggedIn={loggedIn} />
+      <LanguageSwitcher />
       <AccountMenu onSignOut={onSignOut} orders={orders} />
     </div>
 

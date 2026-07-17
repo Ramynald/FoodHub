@@ -1,24 +1,45 @@
-# FoodHub Architecture
+# Архитектура FoodHub
 
-FoodHub is based on the educational Foodgram project but is being developed as an independent product.
+FoodHub основан на учебном проекте Foodgram, но развивается как самостоятельный продукт.
 
-## Project structure
+## Структура проекта
 
-FoodHub consists of two independent parts:
+FoodHub состоит из двух независимых частей:
 
-- Backend — Django REST Framework API
-- Frontend — React application
+- **Backend** — API на Django REST Framework.
+- **Frontend** — приложение на React.
 
-The backend is responsible for:
-- authentication;
-- recipes;
-- favorites;
-- shopping cart;
-- subscriptions;
-- API.
+### Backend отвечает за:
 
-The frontend is responsible for:
-- user interface;
-- routing;
-- forms;
-- interaction with the API.
+- аутентификацию пользователей;
+- работу с рецептами;
+- управление избранным;
+- управление списком покупок;
+- систему подписок;
+- предоставление REST API для фронтенда.
+
+### Frontend отвечает за:
+
+- пользовательский интерфейс;
+- маршрутизацию (навигацию между страницами);
+- работу с формами;
+- взаимодействие с API.
+
+## Технологический стек
+
+### Backend
+- Python
+- Django
+- Django REST Framework
+- PostgreSQL
+- Gunicorn
+
+### Frontend
+- React
+- JavaScript
+- React Router
+- CSS Modules
+
+### Инфраструктура
+- Docker
+- Nginx
