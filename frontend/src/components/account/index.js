@@ -7,6 +7,7 @@ import Icons from "../icons";
 import DefaultImage from "../../images/userpic-icon.jpg";
 import { AvatarPopup } from "../avatar-popup";
 import api from "../../api";
+import { useTranslation } from "react-i18next";
 
 const AccountData = ({ userContext, setIsChangeAvatarOpen }) => {
   return (
@@ -24,6 +25,7 @@ const AccountData = ({ userContext, setIsChangeAvatarOpen }) => {
 const Account = ({ onSignOut, orders }) => {
   const authContext = useContext(AuthContext);
   const userContext = useContext(UserContext);
+  const { t } = useTranslation();
   const [isChangeAvatarOpen, setIsChangeAvatarOpen] = useState(false);
   const [newAvatar, setNewAvatar] = useState("");
 
@@ -90,7 +92,7 @@ const Account = ({ onSignOut, orders }) => {
                         <div className={styles.accountLinkIcon}>
                           {menuItem.icon}
                         </div>
-                        {menuItem.title}
+                        {t(menuItem.title)}
                       </div>
                     }
                   />
@@ -101,7 +103,7 @@ const Account = ({ onSignOut, orders }) => {
               <div className={styles.accountLinkIcon}>
                 <Icons.LogoutMenu />
               </div>
-              Выйти
+              {t("navigation.signOut")}
             </li>
           </ul>
         </div>

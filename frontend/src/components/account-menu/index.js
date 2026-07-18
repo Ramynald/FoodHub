@@ -4,10 +4,12 @@ import { LinkComponent, Account, Button } from '../index.js'
 import { AuthContext } from '../../contexts'
 import { useLocation } from 'react-router-dom'
 import { NotLoggedInMenu } from '../../configs/navigation'
+import { useTranslation } from "react-i18next"
 
 const AccountMenu = ({ onSignOut, orders }) => {
   const authContext = useContext(AuthContext)
   const location = useLocation()
+  const { t } = useTranslation()
   if (!authContext) {
     return <div className={styles.menu}>
       {NotLoggedInMenu.map(item => {
@@ -16,9 +18,9 @@ const AccountMenu = ({ onSignOut, orders }) => {
           modifier='style_dark'
           className={styles.menuButton}
         >
-          {item.title}
+          {t(item.title)}
         </Button> : <LinkComponent
-          title={item.title}
+          title={t(item.title)}
           href={item.href}
           exact
           className={styles.menuLink}

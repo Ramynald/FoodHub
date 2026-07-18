@@ -1,11 +1,22 @@
 {
-    "navigation": {
-      "recipes": "Recipes",
-      "createRecipe": "Create recipe"
-    },
-    "language": {
-      "russian": "Russian",
-      "english": "English"
-    }
+  "navigation": {
+    "recipes": "Recipes",
+    "createRecipe": "Create recipe",
+    "subscriptions": "My subscriptions",
+    "favorites": "Favorites",
+    "changePassword": "Change password",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "signOut": "Sign out"
+  },
+  "language": {
+    "russian": "Russian",
+    "english": "English"
+  },
+  "tags": {
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "dessert": "Dessert"
   }
-  
+}

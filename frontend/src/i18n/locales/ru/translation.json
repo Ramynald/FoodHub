@@ -1,11 +1,23 @@
 {
-    "navigation": {
-      "recipes": "Рецепты",
-      "createRecipe": "Создать рецепт"
-    },
-    "language": {
-      "russian": "Русский",
-      "english": "English"
-    }
+  "navigation": {
+    "recipes": "Рецепты",
+    "createRecipe": "Создать рецепт",
+    "subscriptions": "Мои подписки",
+    "favorites": "Избранное",
+    "changePassword": "Сменить пароль",
+    "signIn": "Войти",
+    "signUp": "Создать аккаунт",
+    "signOut": "Выйти"
+  },
+  "language": {
+    "russian": "Русский",
+    "english": "English"
+  },
+  "tags": {
+    "breakfast": "Завтрак",
+    "lunch": "Обед",
+    "dinner": "Ужин",
+    "dessert": "Десерт"
   }
+}
   

@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import styles from './style.module.css'
+import { useTranslation } from 'react-i18next'
 
 const LanguageSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [language, setLanguage] = useState('RU')
+  const { i18n } = useTranslation()
 
   return (
     <div className={styles.wrapper}>
@@ -24,6 +26,7 @@ const LanguageSwitcher = () => {
           <div
             className={language === 'RU' ? styles.active : ''}
             onClick={() => {
+              i18n.changeLanguage('ru')
               setLanguage('RU')
               setIsOpen(false)
             }}
@@ -34,6 +37,7 @@ const LanguageSwitcher = () => {
           <div
             className={language === 'EN' ? styles.active : ''}
             onClick={() => {
+              i18n.changeLanguage('en')
               setLanguage('EN')
               setIsOpen(false)
             }}
