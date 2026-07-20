@@ -4,6 +4,7 @@ import { Button } from '../index'
 import cn from 'classnames'
 import Icons from '../icons'
 import DefaultImage from "../../images/userpic-icon.jpg"
+import { useTranslation } from "react-i18next"
 
 const FileInput = ({
   label,
@@ -15,6 +16,7 @@ const FileInput = ({
 }) => {
   const [ currentFile, setCurrentFile ] = useState(file)
   const fileInput = useRef(null)
+  const { t } = useTranslation();
 
   useEffect(_ => {
     if (file !== currentFile) {
@@ -26,10 +28,12 @@ const FileInput = ({
     const reader = new FileReader()
 
     if (fileSize && ((file.size / 1000) > fileSize)) {
-      return alert(`Загрузите файл размером не более ${fileSize / 1000}Мб`)
+      return alert(
+        `${t("fileInput.maxSize")} ${fileSize / 1000} ${t("fileInput.mb")}`
+        )
     }
     if (fileTypes && !fileTypes.includes(file.type)) {
-      return alert(`Загрузите файл одного из типов: ${fileTypes.join(', ')}`)
+      return alert(`${t("fileInput.allowedTypes")} ${fileTypes.join(", ")}`)
     }
     reader.readAsDataURL(file);
     reader.onload = function () {
@@ -61,7 +65,7 @@ const FileInput = ({
       className={styles.button}
       type='button'
     >
-      Выбрать файл
+      {t("fileInput.selectFile")}
     </Button>
     {currentFile && <div
       className={styles.image}

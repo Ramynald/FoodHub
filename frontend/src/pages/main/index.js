@@ -4,8 +4,10 @@ import { useRecipes } from '../../utils/index.js'
 import { useEffect } from 'react'
 import api from '../../api'
 import MetaTags from 'react-meta-tags'
+import { useTranslation } from 'react-i18next'
 
 const HomePage = ({ updateOrders }) => {
+  const { t } = useTranslation()
   const {
     recipes,
     setRecipes,
@@ -50,7 +52,7 @@ const HomePage = ({ updateOrders }) => {
         <meta property="og:title" content="Рецепты" />
       </MetaTags>
       <div className={styles.title}>
-        <Title title='Рецепты' />
+      <Title title={t('home.heroTitle')} />
         <CheckboxGroup
           values={tagsValue}
           handleChange={value => {

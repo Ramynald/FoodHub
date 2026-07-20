@@ -12,8 +12,10 @@ import { AuthContext } from "../../contexts";
 import { Redirect } from "react-router-dom";
 import { useContext } from "react";
 import MetaTags from "react-meta-tags";
+import { useTranslation } from "react-i18next";
 
 const SignIn = ({ onSignIn, submitError, setSubmitError }) => {
+  const { t } = useTranslation();
   const { values, handleChange, errors } = useFormWithValidation();
   const authContext = useContext(AuthContext);
 
@@ -41,13 +43,13 @@ const SignIn = ({ onSignIn, submitError, setSubmitError }) => {
             onSignIn(values);
           }}
         >
-          <FormTitle>Войти</FormTitle>
+          <FormTitle>{t("signin.title")}</FormTitle>
 
           <Input
             required
             isAuth={true}
             name="email"
-            placeholder="Email"
+            placeholder={t("signin.email")}
             onChange={onChange}
             error={errors}
           />
@@ -56,7 +58,7 @@ const SignIn = ({ onSignIn, submitError, setSubmitError }) => {
             isAuth={true}
             type="password"
             name="password"
-            placeholder="Пароль"
+            placeholder={t("signin.password")}
             error={errors}
             submitError={submitError}
             onChange={onChange}
@@ -67,7 +69,7 @@ const SignIn = ({ onSignIn, submitError, setSubmitError }) => {
             title="Забыли пароль?"
           /> */}
           <Button modifier="style_dark" type="submit" className={styles.button}>
-            Войти
+            {t("signin.signIn")}
           </Button>
         </Form>
       </Container>

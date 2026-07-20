@@ -18,11 +18,13 @@ import { useHistory } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { Icons } from "../../components";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 const RecipeCreate = ({ onEdit }) => {
   const { value, handleChange, setValue } = useTags();
   const [recipeName, setRecipeName] = useState("");
   const history = useHistory();
+  const { t } = useTranslation();
   const [ingredientValue, setIngredientValue] = useState({
     name: "",
     id: null,
@@ -44,7 +46,7 @@ const RecipeCreate = ({ onEdit }) => {
       ingredientValue.amount !== "" &&
       !/^\d+$/.test(ingredientValue.amount)
     ) {
-      return setIngredientError("Количество ингредиента должно быть целым числом");
+      return setIngredientError(t("recipeCreate.errors.integerAmount"));
     }
 
     if (
@@ -52,11 +54,11 @@ const RecipeCreate = ({ onEdit }) => {
       ingredientValue.name === "" ||
       !ingredientValue.id
     ) {
-      return setIngredientError("Ингредиент не выбран");
+      return setIngredientError(t("recipeCreate.errors.ingredientNotSelected"));
     }
 
     if (recipeIngredients.find(({ name }) => name === ingredientValue.name)) {
-      return setIngredientError("Ингредиент уже выбран");
+      return setIngredientError(t("recipeCreate.errors.ingredientAlreadyAdded"));
     }
 
     setRecipeIngredients([...recipeIngredients, ingredientValue]);
@@ -104,12 +106,12 @@ const RecipeCreate = ({ onEdit }) => {
       recipeFile === "" ||
       recipeFile === null
     ) {
-      setSubmitError({ submitError: "Заполните все поля!" });
+      setSubmitError({ submitError: t("recipeCreate.errors.fillAllFields")});
       return true;
     }
 
     if (value.filter((item) => item.value).length === 0) {
-      setSubmitError({ submitError: "Выберите хотя бы один тег" });
+      setSubmitError({ submitError: t("recipeCreate.errors.selectTag")});
       return true;
     }
     return false;
@@ -123,7 +125,7 @@ const RecipeCreate = ({ onEdit }) => {
           <meta name="description" content="Фудграм - Создание рецепта" />
           <meta property="og:title" content="Создание рецепта" />
         </MetaTags>
-        <Title title="Создание рецепта" />
+        <Title title={t("recipeCreate.title")} />
         <Form
           className={styles.form}
           onSubmit={(e) => {
@@ -156,7 +158,7 @@ const RecipeCreate = ({ onEdit }) => {
                 }
                 if (ingredients) {
                   return setSubmitError({
-                    submitError: `Ингредиенты: ${
+                    submitError: `${t("recipeCreate.errors.ingredients")}: ${
                       ingredients
                         .filter((item) => Object.keys(item).length)
                         .map((item) => {
@@ -168,7 +170,7 @@ const RecipeCreate = ({ onEdit }) => {
                 }
                 if (cooking_time) {
                   return setSubmitError({
-                    submitError: `Время готовки: ${cooking_time[0]}`,
+                    submitError: `${t("recipeCreate.errors.cookingTime")}: ${cooking_time[0]}`,
                   });
                 }
                 const errors = Object.values(err);
@@ -179,7 +181,7 @@ const RecipeCreate = ({ onEdit }) => {
           }}
         >
           <Input
-            label="Название рецепта"
+            label={t("recipeCreate.recipeName")}
             onChange={(e) => {
               setSubmitError({ submitError: "" });
               setIngredientError("");
@@ -189,9 +191,9 @@ const RecipeCreate = ({ onEdit }) => {
             className={styles.mb36}
           />
           <CheckboxGroup
-            label="Теги"
+            label={t("recipeCreate.tags")}
             values={value}
-            emptyText="Нет загруженных тегов"
+            emptyText={t("recipeCreate.noTags")}
             className={styles.checkboxGroup}
             labelClassName={styles.checkboxGroupLabel}
             tagsClassName={styles.checkboxGroupTags}
@@ -201,10 +203,10 @@ const RecipeCreate = ({ onEdit }) => {
           <div className={styles.ingredients}>
             <div className={styles.ingredientsInputs}>
               <Input
-                label="Ингредиенты"
+                label={t("recipeCreate.ingredients")}
                 className={styles.ingredientsNameInput}
                 inputClassName={styles.ingredientsInput}
-                placeholder="Начните вводить название"
+                placeholder={t("recipeCreate.startTyping")}
                 labelClassName={styles.ingredientsLabel}
                 onChange={(e) => {
                   setSubmitError({ submitError: "" });
@@ -221,7 +223,7 @@ const RecipeCreate = ({ onEdit }) => {
                 value={ingredientValue.name}
               />
               <div className={styles.ingredientsAmountInputContainer}>
-                <p className={styles.amountText}>в количестве </p>
+                <p className={styles.amountText}>{t("recipeCreate.amount")} </p>
                 <Input
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
@@ -262,7 +264,7 @@ const RecipeCreate = ({ onEdit }) => {
               )}
             </div>
             <div className={styles.ingredientAdd} onClick={handleAddIngredient}>
-              Добавить ингредиент
+              {t("recipeCreate.addIngredient")}
             </div>
             {ingredientError && (
               <p className={cn(styles.error, styles.errorIngredient)}>
@@ -300,7 +302,7 @@ const RecipeCreate = ({ onEdit }) => {
           </div>
           <div className={styles.cookingTime}>
             <Input
-              label="Время приготовления"
+              label={t("recipeCreate.cookingTime")}
               className={styles.ingredientsTimeInput}
               labelClassName={styles.cookingTimeLabel}
               inputClassName={styles.ingredientsTimeValue}
@@ -311,15 +313,15 @@ const RecipeCreate = ({ onEdit }) => {
               value={recipeTime}
               placeholder="0"
             />
-            <div className={styles.cookingTimeUnit}>мин.</div>
+            <div className={styles.cookingTimeUnit}>{t("recipeCreate.min")}</div>
           </div>
           <Textarea
-            label="Описание рецепта"
+            label={t("recipeCreate.description")}
             onChange={(e) => {
               const value = e.target.value;
               setRecipeText(value);
             }}
-            placeholder="Опишите действия"
+            placeholder={t("recipeCreate.describeSteps")}
           />
           <FileInput
             onChange={(file) => {
@@ -328,10 +330,10 @@ const RecipeCreate = ({ onEdit }) => {
             fileTypes={["image/png", "image/jpeg"]}
             fileSize={5000}
             className={styles.fileInput}
-            label="Загрузить фото"
+            label={t("recipeCreate.uploadPhoto")}
           />
           <Button modifier="style_dark" type="submit" className={styles.button}>
-            Создать рецепт
+            {t("recipeCreate.createRecipe")}
           </Button>
           {submitError.submitError && (
             <p className={styles.error}>{submitError.submitError}</p>

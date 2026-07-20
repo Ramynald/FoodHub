@@ -13,8 +13,10 @@ import { Redirect } from "react-router-dom";
 import { useContext } from "react";
 import MetaTags from "react-meta-tags";
 import { ChangePasswordText } from "../../components/change-password-text";
+import { useTranslation } from "react-i18next";
 
 const ChangePassword = ({ onPasswordChange, submitError, setSubmitError }) => {
+  const { t } = useTranslation();
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
   const authContext = useContext(AuthContext);
@@ -42,11 +44,11 @@ const ChangePassword = ({ onPasswordChange, submitError, setSubmitError }) => {
             onPasswordChange(values);
           }}
         >
-          <FormTitle>Изменить пароль</FormTitle>
+          <FormTitle>{t("changePassword.title")}</FormTitle>
           <Input
             required
             isAuth={true}
-            placeholder="Старый пароль"
+            placeholder={t("changePassword.currentPassword")}
             type="password"
             name="current_password"
             error={errors}
@@ -55,7 +57,7 @@ const ChangePassword = ({ onPasswordChange, submitError, setSubmitError }) => {
           <Input
             required
             isAuth={true}
-            placeholder="Новый пароль"
+            placeholder={t("changePassword.newPassword")}
             type="password"
             name="new_password"
             error={errors}
@@ -63,22 +65,22 @@ const ChangePassword = ({ onPasswordChange, submitError, setSubmitError }) => {
           />
           <ul className={styles.texts}>
             <li className={styles.text}>
-              <ChangePasswordText text="Ваш пароль не должен совпадать с вашим именем или другой персональной информацией или быть слишком похожим на неё" />
+              <ChangePasswordText text={t("changePassword.rule1")} />
             </li>
             <li className={styles.text}>
-              <ChangePasswordText text="Ваш пароль должен содержать как минимум 8 символов" />
+              <ChangePasswordText text={t("changePassword.rule2")} />
             </li>
             <li className={styles.text}>
-              <ChangePasswordText text="Ваш пароль не может быть одним из широко распространённых паролей" />
+              <ChangePasswordText text={t("changePassword.rule3")} />
             </li>
             <li className={styles.text}>
-              <ChangePasswordText text="Ваш пароль не может состоять только из цифр" />
+              <ChangePasswordText text={t("changePassword.rule4")} />
             </li>
           </ul>
           <Input
             required
             isAuth={true}
-            placeholder="Подтвердите новый пароль"
+            placeholder={t("changePassword.repeatPassword")}
             type="password"
             name="repeat_password"
             error={errors}
@@ -93,7 +95,7 @@ const ChangePassword = ({ onPasswordChange, submitError, setSubmitError }) => {
               !isValid || values.new_password !== values.repeat_password
             }
           >
-            Изменить пароль
+            {t("changePassword.button")}
           </Button>
         </Form>
       </Container>

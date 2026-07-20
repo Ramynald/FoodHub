@@ -18,5 +18,75 @@
     "lunch": "Lunch",
     "dinner": "Dinner",
     "dessert": "Dessert"
+  },
+  "home": {
+  "heroTitle": "Cook. Share. Get inspired."
+  },
+  "signup": {
+    "title": "Sign up",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "createAccount": "Create account"
+  },
+  "signin": {
+    "title": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In"
+  },
+  "changePassword": {
+    "title": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "repeatPassword": "Confirm New Password",
+    "button": "Change Password",
+    "rule1": "Your password cannot be too similar to your personal information.",
+    "rule2": "Your password must contain at least 8 characters.",
+    "rule3": "Your password cannot be a commonly used password.",
+    "rule4": "Your password cannot be entirely numeric."
+  },
+  "card": {
+    "signIn": "Sign in",
+    "or": "or",
+    "saveRecipe": "to save the recipe",
+    "min": "min.",
+    "recipeAdded": "Recipe added",
+    "addToShopping": "Add to shopping list",
+    "removeFromFavorites": "Remove from favorites",
+    "addToFavorites": "Add to favorites"
+  },
+  "recipeCreate": {
+    "title": "Create Recipe",
+    "recipeName": "Recipe name",
+    "tags": "Tags",
+    "noTags": "No tags loaded",
+    "ingredients": "Ingredients",
+    "startTyping": "Start typing the ingredient",
+    "amount": "Amount",
+    "addIngredient": "Add ingredient",
+    "cookingTime": "Cooking time",
+    "min": "min.",
+    "description": "Recipe description",
+    "describeSteps": "Describe the cooking steps",
+    "uploadPhoto": "Upload photo",
+    "createRecipe": "Create recipe",
+    "errors": {
+      "integerAmount": "Ingredient amount must be a whole number",
+      "ingredientNotSelected": "Ingredient not selected",
+      "ingredientAlreadyAdded": "Ingredient has already been added",
+      "fillAllFields": "Please fill in all fields!",
+      "selectTag": "Please select at least one tag",
+      "ingredients": "Ingredients",
+      "cookingTime": "Cooking time"
+    }
+  },
+  "fileInput": {
+    "selectFile": "Choose file",
+    "maxSize": "Upload a file no larger than",
+    "mb": "MB",
+    "allowedTypes": "Upload one of the following file types:"
   }
 }

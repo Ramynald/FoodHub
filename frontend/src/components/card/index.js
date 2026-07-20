@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts";
 import { useContext, useState } from "react";
 import cn from "classnames";
 import DefaultImage from "../../images/userpic-icon.jpg";
+import { useTranslation } from "react-i18next";
 
 const Card = ({
   name = "Без названия",
@@ -22,6 +23,7 @@ const Card = ({
   const authContext = useContext(AuthContext);
   const [toLogin, setToLogin] = useState(false);
   const [whiteSpaceValue, setWhiteSpaceValue] = useState("nowrap");
+  const { t } = useTranslation();
 
   return (
     <div className={styles.card}>
@@ -29,9 +31,10 @@ const Card = ({
         <Popup
           title={
             <>
-              <LinkComponent href="/signin" title="Войдите" /> или{" "}
-              <LinkComponent href="/signup" title="зарегистрируйтесь" />, чтобы
-              сохранить рецепт
+              <LinkComponent href="/signin" title={t("card.signIn")} />{" "}
+              {t("card.or")}{" "}
+              <LinkComponent href="/signup" title={t("card.signUp")} />,{" "}
+              {t("card.saveRecipe")}
             </>
           }
           onClose={() => {
@@ -77,7 +80,9 @@ const Card = ({
               className={styles.card__link}
             />
           </div>
-          <div className={styles.card__time}>{cooking_time} мин.</div>
+          <div className={styles.card__time}>
+            {cooking_time} {t("card.min")}
+          </div>
         </div>
         <div className={styles.card__controls}>
           <Button
@@ -96,11 +101,11 @@ const Card = ({
             {is_in_shopping_cart ? (
               <>
                 <Icons.CheckIcon />
-                Рецепт добавлен
+                {t("card.recipeAdded")}
               </>
             ) : (
               <>
-                <Icons.PlusIcon /> Добавить в покупки
+                <Icons.PlusIcon /> {t("card.addToShopping")}
               </>
             )}
           </Button>
@@ -118,7 +123,7 @@ const Card = ({
             })}
             data-tooltip-id={id}
             data-tooltip-content={
-              is_favorited ? "Удалить из избранного" : "Добавить в избранное"
+              is_favorited ? t("card.removeFromFavorites") : t("card.addToFavorites")
             }
             data-tooltip-place="bottom"
           >

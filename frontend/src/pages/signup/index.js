@@ -12,11 +12,13 @@ import { Redirect } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts";
 import MetaTags from "react-meta-tags";
+import { useTranslation } from "react-i18next";
 
 const SignUp = ({ onSignUp, submitError, setSubmitError }) => {
+  const { t } = useTranslation();
   const { values, handleChange, errors } = useFormWithValidation();
   const authContext = useContext(AuthContext);
-
+  
   const onChange = (e) => {
     setSubmitError({ submitError: "" });
     handleChange(e);
@@ -41,9 +43,9 @@ const SignUp = ({ onSignUp, submitError, setSubmitError }) => {
             onSignUp(values);
           }}
         >
-          <FormTitle>Регистрация</FormTitle>
+          <FormTitle>{t("signup.title")}</FormTitle>
           <Input
-            placeholder="Имя"
+            placeholder={t("signup.firstName")}
             name="first_name"
             required
             isAuth={true}
@@ -51,7 +53,7 @@ const SignUp = ({ onSignUp, submitError, setSubmitError }) => {
             onChange={onChange}
           />
           <Input
-            placeholder="Фамилия"
+            placeholder={t("signup.lastName")}
             name="last_name"
             required
             isAuth={true}
@@ -59,7 +61,7 @@ const SignUp = ({ onSignUp, submitError, setSubmitError }) => {
             onChange={onChange}
           />
           <Input
-            placeholder="Имя пользователя"
+            placeholder={t("signup.username")}
             name="username"
             required
             isAuth={true}
@@ -68,7 +70,7 @@ const SignUp = ({ onSignUp, submitError, setSubmitError }) => {
           />
 
           <Input
-            placeholder="Адрес электронной почты"
+            placeholder={t("signup.email")}
             name="email"
             required
             isAuth={true}
@@ -76,7 +78,7 @@ const SignUp = ({ onSignUp, submitError, setSubmitError }) => {
             onChange={onChange}
           />
           <Input
-            placeholder="Пароль"
+            placeholder={t("signup.password")}
             type="password"
             name="password"
             required
@@ -86,7 +88,7 @@ const SignUp = ({ onSignUp, submitError, setSubmitError }) => {
             onChange={onChange}
           />
           <Button modifier="style_dark" type="submit" className={styles.button}>
-            Создать аккаунт
+            {t("signup.createAccount")}
           </Button>
         </Form>
       </Container>
