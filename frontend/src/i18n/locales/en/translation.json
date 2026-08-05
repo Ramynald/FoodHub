@@ -88,5 +88,67 @@
     "maxSize": "Upload a file no larger than",
     "mb": "MB",
     "allowedTypes": "Upload one of the following file types:"
+  },
+  "recipe": {
+    "edit": "Edit recipe",
+    "ingredients": "Ingredients",
+    "description": "Description",
+    "copyLink": "Copy direct link to recipe",
+    "removeFromFavorites": "Remove from favorites",
+    "addToFavorites": "Add to favorites",
+    "subscribe": "Subscribe to author",
+    "unsubscribe": "Unsubscribe from author",
+    "linkCopied": "Link copied",
+    "yourLink": "Your link:",
+    "one": "recipe",
+    "few": "recipes",
+    "many": "recipes"
+  },
+  "subscriptions": {
+    "mySubscriptions": "My subscriptions",
+    "unsubscribe": "Unsubscribe",
+    "confirmUnsubscribe": "Are you sure you want to unsubscribe?",
+    "more": "More"
+  },
+  "user": {
+    "userPage": "User page",
+    "unsubscribe": "Unsubscribe from author",
+    "subscribe": "Subscribe to author"
+  },
+  "favorites": {
+    "title": "Favorites"
+  },
+  "footer": {
+    "about": "About",
+    "technologies": "Technologies"
+  },
+  "about": {
+    "title": "About",
+    "hello": "Hello!",
+    "whatIs": "What is FoodHub?",
+    "paragraph1": "FoodHub is my first pet project, created while I was learning backend development. Over time, it evolved beyond a training project into an application that I continue to improve by adding new features, refining the architecture, and enhancing the user experience.",
+    "paragraph2": "One of the latest milestones is full bilingual support. The interface is now available in English and Russian, and switching languages happens instantly without reloading the page.",
+    "featuresTitle": "FoodHub currently includes:",
+    "feature1": "Recipe creation and publishing",
+    "feature2": "Recipe search and browsing",
+    "feature3": "Author subscriptions",
+    "feature4": "Favorite recipes",
+    "feature5": "Shopping list",
+    "feature6": "Full bilingual support (English & Russian)",
+    "futureTitle": "The project is under active development. Planned features include:",
+    "future1": "Recipe reviews and comments",
+    "future2": "Recipe ratings",
+    "future3": "Advanced search and filtering",
+    "future4": "Personal user statistics",
+    "future5": "AI-powered recipe search and recommendations",
+    "thanks": "Thank you for visiting my project!",
+    "links": "Links",
+    "repository": "Project repository",
+    "author": "Project author"
+  },
+  "technologies": {
+    "title": "Technologies",
+    "subtitle": "FoodHub is built with modern backend, frontend, and DevOps technologies.",
+    "future": "The technology stack continues to evolve alongside FoodHub. New technologies and tools will be introduced as the project grows."
   }
 }

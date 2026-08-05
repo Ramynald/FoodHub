@@ -19,6 +19,7 @@ import DefaultImage from "../../images/userpic-icon.jpg";
 import { useRecipe } from "../../utils/index.js";
 import api from "../../api";
 import { Notification } from "../../components/notification";
+import { useTranslation } from "react-i18next";
 
 const SingleCard = ({ loadItem, updateOrders }) => {
   const [loading, setLoading] = useState(true);
@@ -33,6 +34,7 @@ const SingleCard = ({ loadItem, updateOrders }) => {
   const userContext = useContext(UserContext);
   const { id } = useParams();
   const history = useHistory();
+  const { t } = useTranslation();
 
   const handleCopyLink = () => {
     api
@@ -52,7 +54,7 @@ const SingleCard = ({ loadItem, updateOrders }) => {
              * поэтому добавил отдельную плашку на этот случай
              */
             setNotificationError({
-              text: `Ваша ссылка: ${shortLink}`,
+              text: `${t("recipe.yourLink")} ${shortLink}`,
               position: "40px",
             });
           });
@@ -96,7 +98,7 @@ const SingleCard = ({ loadItem, updateOrders }) => {
       <Container>
         <MetaTags>
           <title>{name}</title>
-          <meta name="description" content={`Фудграм - ${name}`} />
+          <meta name="description" content={`FoodHub - ${name}`} />
           <meta property="og:title" content={name} />
         </MetaTags>
         <div className={styles["single-card"]}>
@@ -114,7 +116,7 @@ const SingleCard = ({ loadItem, updateOrders }) => {
                   clickHandler={handleCopyLink}
                   className={cn(styles["single-card__save-button"])}
                   data-tooltip-id="tooltip-copy"
-                  data-tooltip-content="Скопировать прямую ссылку на рецепт"
+                  data-tooltip-content={t("recipe.copyLink")}
                   data-tooltip-place="top"
                 >
                   <Icons.CopyLinkIcon />
@@ -134,8 +136,8 @@ const SingleCard = ({ loadItem, updateOrders }) => {
                       data-tooltip-id="tooltip-save"
                       data-tooltip-content={
                         is_favorited
-                          ? "Удалить из избранного"
-                          : "Добавить в избранное"
+                          ? t("recipe.removeFromFavorites")
+                          : t("recipe.addToFavorites")
                       }
                       data-tooltip-place="bottom"
                     >
@@ -149,7 +151,7 @@ const SingleCard = ({ loadItem, updateOrders }) => {
 
             <div className={styles["single-card__extra-info"]}>
               <TagsContainer tags={tags} />
-              <p className={styles["single-card__text"]}>{cooking_time} мин.</p>
+              <p className={styles["single-card__text"]}>{cooking_time} {t("card.min")}</p>
               <p className={styles["single-card__text_with_link"]}>
                 <div className={styles["single-card__text"]}>
                   <div
@@ -190,8 +192,8 @@ const SingleCard = ({ loadItem, updateOrders }) => {
                     data-tooltip-id="tooltip-subscribe"
                     data-tooltip-content={
                       author.is_subscribed
-                        ? "Отписаться от автора"
-                        : "Подписаться на автора"
+                        ? t("recipe.unsubscribe")
+                        : t("recipe.subscribe")
                     }
                     data-tooltip-place="bottom"
                   >
@@ -220,11 +222,11 @@ const SingleCard = ({ loadItem, updateOrders }) => {
                   {is_in_shopping_cart ? (
                     <>
                       <Icons.CheckIcon />
-                      Рецепт добавлен
+                      {t("card.recipeAdded")}
                     </>
                   ) : (
                     <>
-                      <Icons.PlusIcon /> Добавить в покупки
+                      <Icons.PlusIcon /> {t("card.addToShopping")}
                     </>
                   )}
                 </Button>
@@ -234,7 +236,7 @@ const SingleCard = ({ loadItem, updateOrders }) => {
                   href={`${url}/edit`}
                   className={styles["single-card__edit"]}
                 >
-                  Редактировать рецепт
+                  {t("recipe.edit")}
                 </Button>
               )}
             </div>
@@ -243,7 +245,7 @@ const SingleCard = ({ loadItem, updateOrders }) => {
           </div>
         </div>
         <Notification
-          text="Ссылка скопирована"
+          text={t("recipe.linkCopied")}
           style={{ right: notificationPosition }}
         />
         <Notification

@@ -1,9 +1,11 @@
 import styles from './styles.module.css'
+import { useTranslation } from "react-i18next"
 
 const Ingredients = ({ ingredients }) => {
+  const { t } = useTranslation();
   if (!ingredients) { return null }
   return <div className={styles.ingredients}>
-    <h3 className={styles['ingredients__title']}>Ингредиенты:</h3>
+    <h3 className={styles['ingredients__title']}>{t("recipe.ingredients")}:</h3>
     <ul className={styles['ingredients__list']}>
       {ingredients.map(({
         name,

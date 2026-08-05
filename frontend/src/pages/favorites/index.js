@@ -4,8 +4,10 @@ import { useRecipes } from '../../utils/index.js'
 import { useEffect } from 'react'
 import api from '../../api'
 import MetaTags from 'react-meta-tags'
+import { useTranslation } from "react-i18next";
 
 const Favorites = ({ updateOrders }) => {
+  const { t } = useTranslation();
   const {
     recipes,
     setRecipes,
@@ -45,12 +47,12 @@ const Favorites = ({ updateOrders }) => {
   return <Main>
     <Container>
       <MetaTags>
-        <title>Избранное</title>
-        <meta name="description" content="Фудграм - Избранное" />
-        <meta property="og:title" content="Избранное" />
+        <title>{t("favorites.title")}</title>
+        <meta name="description" content={`FoodHub - ${t("favorites.title")}`} />
+        <meta property="og:title" content={t("favorites.title")} />
       </MetaTags>
       <div className={styles.title}>
-        <Title title='Избранное' />
+        <Title title={t("favorites.title")} />
         <CheckboxGroup
           values={tagsValue}
           handleChange={value => {

@@ -18,8 +18,10 @@ import { useParams, useHistory } from "react-router-dom";
 import { AuthContext, UserContext } from "../../contexts";
 import MetaTags from "react-meta-tags";
 import DefaultImage from "../../images/userpic-icon.jpg";
+import { useTranslation } from "react-i18next";
 
 const UserPage = ({ updateOrders }) => {
+  const { t } = useTranslation();
   const {
     recipes,
     setRecipes,
@@ -87,14 +89,14 @@ const UserPage = ({ updateOrders }) => {
           <title>
             {user
               ? `${user.first_name} ${user.last_name}`
-              : "Страница пользователя"}
+              : t("user.userPage")}
           </title>
           <meta
             name="description"
             content={
               user
-                ? `Фудграм - ${user.first_name} ${user.last_name}`
-                : "Фудграм - Страница пользователя"
+                ? `FoodHub - ${user.first_name} ${user.last_name}`
+                : `FoodHub - ${t("user.userPage")}`
             }
           />
           <meta
@@ -102,7 +104,7 @@ const UserPage = ({ updateOrders }) => {
             content={
               user
                 ? `${user.first_name} ${user.last_name}`
-                : "Страница пользователя"
+                : t("user.userPage")
             }
           />
         </MetaTags>
@@ -143,7 +145,7 @@ const UserPage = ({ updateOrders }) => {
                 }}
               >
                 <Icons.AddUser />{" "}
-                {subscribed ? "Отписаться от автора" : "Подписаться на автора"}
+                {subscribed ? t("user.unsubscribe") : t("user.subscribe")}
               </Button>
             )}
           </div>

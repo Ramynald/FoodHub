@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { Button, LinkComponent, Popup } from "../index";
 import DefaultImage from "../../images/userpic-icon.jpg";
+import { useTranslation } from "react-i18next";
 
 const countForm = (number, titles) => {
   number = Math.abs(number);
@@ -27,6 +28,7 @@ const Subscription = ({
   recipes,
   avatar,
 }) => {
+  const { t } = useTranslation();
   const shouldShowButton = recipes_count > 3;
   const moreRecipes = recipes_count - 3;
   const [toDelete, setToDelete] = useState(false);
@@ -35,7 +37,7 @@ const Subscription = ({
     <div className={styles.subscription}>
       {toDelete && (
         <Popup
-          title="Вы уверены, что хотите отписаться?"
+          title={t("subscriptions.confirmUnsubscribe")}
           onSubmit={() => {
             removeSubscription({
               id,
@@ -83,7 +85,7 @@ const Subscription = ({
                         {recipe.name}
                       </h3>
                       <p className={styles.subscriptionRecipeText}>
-                        {recipe.cooking_time} мин.
+                        {recipe.cooking_time} {t("card.min")}
                       </p>
                     </div>
                   }
@@ -95,10 +97,10 @@ const Subscription = ({
             <li className={styles.subscriptionMore}>
               <LinkComponent
                 className={styles.subscriptionLink}
-                title={`Еще ${moreRecipes} ${countForm(moreRecipes, [
-                  "рецепт",
-                  "рецепта",
-                  "рецептов",
+                title={`${t("subscriptions.more")} ${moreRecipes} ${countForm(moreRecipes, [
+                  t("recipe.one"),
+                  t("recipe.few"),
+                  t("recipe.many"),
                 ])}...`}
                 href={`/user/${id}`}
               />
@@ -128,7 +130,7 @@ const Subscription = ({
               stroke-linejoin="round"
             />
           </svg>
-          Отписаться
+          {t("subscriptions.unsubscribe")}
         </Button>
       </div>
     </div>

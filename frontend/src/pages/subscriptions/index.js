@@ -3,8 +3,10 @@ import { useSubscriptions } from '../../utils'
 import api from '../../api'
 import { useEffect } from 'react'
 import MetaTags from 'react-meta-tags'
+import { useTranslation } from "react-i18next"
 
 const SubscriptionsPage = () => {
+  const { t } = useTranslation();
   const {
     subscriptions,
     setSubscriptions,
@@ -32,12 +34,12 @@ const SubscriptionsPage = () => {
   return <Main>
     <Container>
       <MetaTags>
-        <title>Мои подписки</title>
-        <meta name="description" content="Фудграм - Мои подписки" />
-        <meta property="og:title" content="Мои подписки" />
+        <title>{t("subscriptions.mySubscriptions")}</title>
+        <meta name="description" content={`FoodHub - ${t("subscriptions.mySubscriptions")}`} />
+        <meta property="og:title" content={t("subscriptions.mySubscriptions")} />
       </MetaTags>
       <Title
-        title='Мои подписки'
+        title={t("subscriptions.mySubscriptions")}
       />
       <SubscriptionList
         subscriptions={subscriptions}

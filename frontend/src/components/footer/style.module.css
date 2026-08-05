@@ -45,9 +45,10 @@
 }
 
 .footer__logo {
-  max-width: 154px;
+  width: 210px;
+  height: auto;
   position: relative;
-  bottom: 12px;
+  bottom: 4px;
 }
 
 .footer__menu {

@@ -1,8 +1,10 @@
 import styles from './style.module.css'
 import { Container, LinkComponent } from '../index'
 import LogoFooter from '../../images/logo-footer.png'
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return <footer className={styles.footer}>
     <Container className={styles.footer__container}>
       <LinkComponent
@@ -15,7 +17,7 @@ const Footer = () => {
         <ul className={styles['footer__menu-list']}>
           <li className={styles['footer__menu-item']}>
             <LinkComponent
-              title='О проекте'
+              title={t("footer.about")}
               href='/about'
               exact
               className={styles['footer__menu-link']}
@@ -23,7 +25,7 @@ const Footer = () => {
           </li>
           <li className={styles['footer__menu-item']}>
             <LinkComponent
-              title='Технологии'
+              title={t("footer.technologies")}
               href='/technologies'
               exact
               className={styles['footer__menu-link']}
@@ -32,7 +34,7 @@ const Footer = () => {
         </ul>
       </div>
 
-      <div class={styles.footer__copyright}>
+      <div className={styles.footer__copyright}>
       © {(new Date()).getFullYear()}
       </div>
     </Container>
