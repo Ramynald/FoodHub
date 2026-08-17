@@ -48,15 +48,17 @@
 }
 
 .accountName {
-  color: #000;
+  color: var(--text-color);
   font-size: 16px;
   line-height: 120%;
+  transition: color .3s ease;
 }
 
 .accountEmail {
-  color: #a0a0a0;
+  color: var(--text-secondary);
   font-size: 16px;
   line-height: 120%;
+  transition: color .3s ease;
 }
 
 .accountLinks {
@@ -96,10 +98,10 @@
   content: "";
   display: block;
   position: absolute;
-  border: 1.5px solid #efefef;
+  border: 1.5px solid var(--border-color);
   left: 0;
   right: 0;
-  background: #fff;
+  background: var(--surface-color);
   bottom: 0;
   border-radius: 8px;
   top: 31px;
@@ -116,7 +118,12 @@
 }
 
 .accountLink {
-  color: #000;
+  color: var(--text-color);
+  transition: color .3s ease;
+}
+
+.accountLink:hover {
+  color: var(--accent-color);
 }
 
 .accountLinkTitle {

@@ -6,7 +6,8 @@ import {
   NavMenu,
   AccountMenuMobile,
   LinkComponent,
-  LanguageSwitcher
+  LanguageSwitcher,
+  ThemeSwitcher
 } from '../index.js'
 import cn from 'classnames'
 import { useLocation } from 'react-router-dom'
@@ -42,6 +43,7 @@ const Nav = ({ loggedIn, onSignOut, orders }) => {
     </div>
     <div className={styles.nav__container}>
       <NavMenu loggedIn={loggedIn} />
+      <ThemeSwitcher />
       <LanguageSwitcher />
       <AccountMenu onSignOut={onSignOut} orders={orders} />
     </div>

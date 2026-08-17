@@ -1,0 +1,55 @@
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .icon {
+    font-size: 18px;
+    user-select: none;
+  }
+  
+  .slider {
+    position: relative;
+  
+    width: 48px;
+    height: 26px;
+  
+    background: #d1d5db;
+  
+    border-radius: 999px;
+  
+    transition: all .3s ease;
+  }
+  
+  .sliderDark {
+    background: #334155;
+  }
+  
+  .thumb {
+    position: absolute;
+  
+    top: 3px;
+    left: 3px;
+  
+    width: 20px;
+    height: 20px;
+  
+    border-radius: 50%;
+  
+    background: white;
+  
+    box-shadow: 0 4px 10px rgba(0,0,0,.18);
+  
+    transition: all .3s ease;
+  }
+  
+  .thumbDark {
+    transform: translateX(22px);
+  }
+  

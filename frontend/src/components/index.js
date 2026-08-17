@@ -33,10 +33,12 @@ import Orders from './orders'
 import NavMenu from './nav-menu'
 import Popup from './popup'
 import LanguageSwitcher from './language-switcher'
+import ThemeSwitcher from './theme-switcher'
 
 export {
   Popup,
   LanguageSwitcher,
+  ThemeSwitcher,
   Header,
   AccountMenuMobile,
   AccountMobile,

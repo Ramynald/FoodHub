@@ -2,7 +2,7 @@ import navigation from '../../configs/navigation'
 import cn from 'classnames'
 import styles from './style.module.css'
 import { useLocation } from 'react-router-dom'
-import { Button, LinkComponent } from '../index.js'
+import { LinkComponent } from '../index.js'
 import { useTranslation } from 'react-i18next'
 
 const NavMenu = ({
@@ -16,30 +16,22 @@ const NavMenu = ({
       return null
     }
 
+    const isActive = location.pathname === item.href
+
     return (
       <li
         className={cn(styles['nav-menu__item'], {
-          [styles['nav-menu__item_active']]: false
+          [styles['nav-menu__item_active']]: isActive
         })}
         key={item.href}
       >
-        {location.pathname === item.href ? (
-          <Button
-            href={item.href}
-            modifier='style_dark'
-            className={styles['nav-menu__button']}
-          >
-            {t(item.title)}
-          </Button>
-        ) : (
-          <LinkComponent
-            title={t(item.title)}
-            activeClassName={styles['nav-menu__link_active']}
-            href={item.href}
-            exact
-            className={styles['nav-menu__link']}
-          />
-        )}
+        <LinkComponent
+          title={t(item.title)}
+          activeClassName={styles['nav-menu__link_active']}
+          href={item.href}
+          exact
+          className={styles['nav-menu__link']}
+        />
       </li>
     )
   }

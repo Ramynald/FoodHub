@@ -1,14 +1,25 @@
 .menuLink {
   white-space: nowrap;
-  color: #000;
+
+  color: var(--text-color);
   background: none;
+
   border: none;
   cursor: pointer;
+
   font-size: 18px;
   display: inline-block;
+
   font-weight: 500;
   line-height: 110%;
+
   padding: 0 18px;
+
+  transition: color .3s ease;
+}
+
+.menuLink:hover {
+  color: var(--accent-color);
 }
 
 .menuLink:last-child {
