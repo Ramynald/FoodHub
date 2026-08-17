@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { Header, Footer, ProtectedRoute } from "./components";
 import api from "./api";
 import styles from "./styles.module.css";
+import splashImage from "./images/foodhub-splash-light.png";
 
 import {
   About,
@@ -29,6 +30,7 @@ import { AuthContext, UserContext } from "./contexts";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(null);
+  const [showSplash, setShowSplash] = useState(true);
   const [user, setUser] = useState({});
   const [orders, setOrders] = useState(0);
   const [authError, setAuthError] = useState({ submitError: "" });
@@ -205,6 +207,16 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (loggedIn !== null) {
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+      }, 2000);
+  
+      return () => clearTimeout(timer);
+    }
+  }, [loggedIn]);
+
   // useEffect(() => {
   //   document.addEventListener('keydown', function(event) {
   //     if (event.ctrlKey && event.shiftKey && event.key === 'z') {
@@ -213,13 +225,17 @@ function App() {
   //   });
   // }, [])
 
-  if (loggedIn === null) {
-    return <div className={styles.loading}>Загрузка...</div>;
-  }
+  // if (loggedIn === null) {
+  //  return (
+  //    <div className={styles.loading}>
+  //      <img src={splashImage} alt="FoodHub" />
+  //    </div>
+  //  ); /*<div className={styles.loading}>Загрузка...</div>;
+  // }
 
   return (
     <AuthContext.Provider value={loggedIn}>
-      <UserContext.Provider value={user}>
+       <UserContext.Provider value={user}>
         <div className="App">
           <Header orders={orders} loggedIn={loggedIn} onSignOut={onSignOut} />
           <Switch>
@@ -331,6 +347,10 @@ function App() {
             </Route>
           </Switch>
           <Footer />
+        </div>
+
+        <div className={styles.splash}>
+          <img src={splashImage} alt="FoodHub" />
         </div>
       </UserContext.Provider>
     </AuthContext.Provider>
