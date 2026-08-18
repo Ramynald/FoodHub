@@ -208,14 +208,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (loggedIn !== null) {
-      const timer = setTimeout(() => {
-        setShowSplash(false);
-      }, 2000);
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 1500);
   
-      return () => clearTimeout(timer);
-    }
-  }, [loggedIn]);
+    return () => clearTimeout(timer);
+  }, []);
 
   // useEffect(() => {
   //   document.addEventListener('keydown', function(event) {
@@ -349,7 +347,11 @@ function App() {
           <Footer />
         </div>
 
-        <div className={styles.splash}>
+        <div
+          className={`${styles.splash} ${
+           showSplash ? "" : styles.splashHidden
+          }`}
+        >
           <img src={splashImage} alt="FoodHub" />
         </div>
       </UserContext.Provider>
