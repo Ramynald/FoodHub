@@ -3,9 +3,9 @@
   align-items: center;
   justify-content: center;
   min-height: 100px;
-
   background: var(--bg-color);
   transition: background-color 0.3s ease;
+  position: relative;
 }
 
 .headerContent {
@@ -14,14 +14,20 @@
   grid-template-columns: 1fr 2fr;
 }
 
+.headerContent > :last-child {
+  grid-column: 2;
+}
+
 .headerLogo {
-  max-width: 154px;
+  width: 650px;
+  max-width: none;
   position: relative;
-  bottom: 12px;
 }
 
 .headerLink {
-  text-align: left;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: fit-content;
   user-select: none;
 } 

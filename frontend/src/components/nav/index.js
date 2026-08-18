@@ -14,7 +14,7 @@ import { useLocation } from 'react-router-dom'
 import hamburgerImg from '../../images/hamburger-menu.png'
 import hamburgerImgClose from '../../images/hamburger-menu-close.png'
 
-const Nav = ({ loggedIn, onSignOut, orders }) => {
+const Nav = ({ loggedIn, onSignOut, orders, onThemeChange }) => {
 
   const [ menuToggled, setMenuToggled ] = useState(false)
   const location = useLocation()
@@ -43,7 +43,7 @@ const Nav = ({ loggedIn, onSignOut, orders }) => {
     </div>
     <div className={styles.nav__container}>
       <NavMenu loggedIn={loggedIn} />
-      <ThemeSwitcher />
+      <ThemeSwitcher onThemeChange={onThemeChange} />
       <LanguageSwitcher />
       <AccountMenu onSignOut={onSignOut} orders={orders} />
     </div>

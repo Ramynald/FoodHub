@@ -20,12 +20,16 @@
   align-items: center;
   justify-content: center;
 
-  background: #ffffff;
+  background: #efffc0;
 
   opacity: 1;
   visibility: visible;
 
   transition: opacity 1.8s ease, visibility 1.8s ease;
+}
+
+:global(body.dark) .splash {
+  background: #05070b;
 }
 
 .splashHidden {

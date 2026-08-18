@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './style.module.css'
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher = ({ onThemeChange }) => {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('theme') === 'dark'
   })
@@ -10,9 +10,11 @@ const ThemeSwitcher = () => {
     if (darkMode) {
       document.body.classList.add('dark')
       localStorage.setItem('theme', 'dark')
+      onThemeChange(true)
     } else {
       document.body.classList.remove('dark')
       localStorage.setItem('theme', 'light')
+      onThemeChange(false)
     }
   }, [darkMode])
 

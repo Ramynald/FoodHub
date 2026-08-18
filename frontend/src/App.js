@@ -5,7 +5,8 @@ import React, { useState, useEffect } from "react";
 import { Header, Footer, ProtectedRoute } from "./components";
 import api from "./api";
 import styles from "./styles.module.css";
-import splashImage from "./images/foodhub-splash-light.png";
+import splashLight from "./images/foodhub-splash-light.png";
+import splashDark from "./images/foodhub-splash-dark.png";
 
 import {
   About,
@@ -37,6 +38,9 @@ function App() {
   const [registrError, setRegistrError] = useState({ submitError: "" });
   const [changePasswordError, setChangePasswordError] = useState({
     submitError: "",
+  });
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
   });
 
   const registration = ({
@@ -235,7 +239,13 @@ function App() {
     <AuthContext.Provider value={loggedIn}>
        <UserContext.Provider value={user}>
         <div className="App">
-          <Header orders={orders} loggedIn={loggedIn} onSignOut={onSignOut} />
+        <Header
+          orders={orders}
+          loggedIn={loggedIn}
+          onSignOut={onSignOut}
+          darkMode={darkMode}
+          onThemeChange={setDarkMode}
+        />
           <Switch>
             <Route
               exact
@@ -352,7 +362,10 @@ function App() {
            showSplash ? "" : styles.splashHidden
           }`}
         >
-          <img src={splashImage} alt="FoodHub" />
+          <img
+            src={darkMode ? splashDark : splashLight}
+            alt="FoodHub"
+          />
         </div>
       </UserContext.Provider>
     </AuthContext.Provider>

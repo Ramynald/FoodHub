@@ -1,5 +1,7 @@
 .main {
   min-height: calc(100dvh - 150px - 50px - 100px);
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .mainBG {
